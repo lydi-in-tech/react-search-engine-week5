@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import FormattedDate from "./FormattedDate";
+import FormattedDate from "./FormattedDate"
 import axios from "axios"
 import "./Weather.css"
   
@@ -14,7 +14,7 @@ export default function Weather(props) {
     description:response.data.weather[0].description,
     humidity: response.data.main.humidity,
       windspeed: response.data.wind.speed,
-      date: new Date(response.data.dt*1000),
+      date: new Date(response.data.dt * 1000),
       iconUrl: "http://openweathermap.org/img/wn/50d@2x.png",
     city: response.data.name
    })
@@ -43,39 +43,41 @@ export default function Weather(props) {
         </div>
       </div>
     </form>
-  </div>
+          </div>
+          
+          <div className="icon" ><img src="http://openweathermap.org/img/wn/50d@2x.png" width="200" height="200" alt="clear" /> 
+                <h1 className="temp" >{Math.round(weatherData.temperature)}</h1>
+                <span className="celcius">
+                    <a href="/#" className="celsius-link">°C</a>|<a href="/#" className="fahrenheit-link">°F</a>
+                </span>
+                </div>
+            
+            
+                <h1 className="city">{weatherData.city}</h1>
+            
 
-  <div className="icon" ><img src="http://openweathermap.org/img/wn/50d@2x.png" width="200" height="200" alt="clear" id="icon"/> 
-            <div className="temp" id="temp">{Math.round(weatherData.temperature)}</div>
-    <span id="celcius" className="celcius">
-      <strong id="temperature"></strong>
-      <a href="/#" id="celsius-link">°C</a>|<a href="/#" id="fahrenheit-link">°F</a>
-    </span>
-  </div> 
-
-<h1>
-            <div id="city" className="city">{weatherData.city }</div>
-</h1>
-
-          <div className="time">
-            <FormattedDate date= {weatherData.date} />
+            <div className="time">
+                <FormattedDate date={weatherData.date} />
+            </div>
+            
+            <div className="info">
+                <div className="description text-capitalize">{weatherData.description}</div>
+                <div className="humidity" >Humidity: {weatherData.humidity}%</div>
+                <div className="windSpeed" >Wind: {Math.round(weatherData.windspeed)}km/h</div> 
+            </div>
+            
 </div>
-         
 
-
-<div className="info">
-            <div className="description text-capitalize" id="description">{ weatherData.description}</div>
-            <div className="humidity" id="humidity">Humidity: { weatherData.humidity}%</div> 
-            <div className="windSpeed" id="windSpeed">Wind: { Math.round(weatherData.windspeed)}km/h</div> 
-</div>
+  
         </div>
-        </div>
+      
         
     )
     
   } else {
-     let apiKey = "bf54175800a55e59e6c4d6461deeef12"
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}&units=metric`
+    let apiKey = "bf54175800a55e59e6c4d6461deeef12"
+      let city="New York"
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
     axios.get(apiUrl).then(handleResponse)
   return "Loading..."
   }
