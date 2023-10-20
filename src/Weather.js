@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import FormattedDate from "./FormattedDate"
+import WeatherTemperature from "./WeatherTemperature";
 import axios from "axios"
 import "./Weather.css"
   
@@ -69,10 +70,10 @@ export default function Weather(props) {
           </div>
           
           <div className="icon" ><img src="http://openweathermap.org/img/wn/50d@2x.png" width="200" height="200" alt="clear" /> 
-                <h1 className="temp" >{Math.round(weatherData.temperature)}</h1>
-                <span className="celcius">
-                    <a href="/#" className="celsius-link">°C</a>|<a href="/#" className="fahrenheit-link">°F</a>
-                </span>
+            
+            
+              <WeatherTemperature celsius={weatherData.temperature} />
+              
                 </div>
             
             

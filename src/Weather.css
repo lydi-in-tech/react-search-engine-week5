@@ -16,12 +16,13 @@
     top: 22px;
 }
 
-.celcius {
-    font-size: 20px;
+.tempUnit {
+    font-size: 22px;
     position: absolute;
-    left: 270px;
+    left: 250px;
     top: 35px;
 }
+
 
 .info {
     font-size: 18px;
